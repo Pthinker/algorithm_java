@@ -2,7 +2,7 @@
 public class QuickSort {
 
     public static void quicksort(int[] arr, int left, int right) {
-        if( (right-left)<=1 )
+        if (right <= left)
             return;
 
         int pivot = arr[left];
@@ -25,13 +25,13 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] iarr = Utils.generate_array(1000, 2000);
+        int[] iarr = Utils.generateArray(1000, 2000);
         System.out.println("Initial array:");
-        Utils.print_array(iarr);
+        Utils.printArray(iarr);
 
         quicksort(iarr, 0, iarr.length-1);
 
         System.out.println("Sorted array:");
-        Utils.print_array(iarr);
+        Utils.printArray(iarr);
     }
 }

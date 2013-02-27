@@ -2,88 +2,67 @@ import java.util.Random;
 
 
 class MergeSort {
-  public static void main(String[] args) {
-    final int LENGTH = 100;
+    public static void main (String[] args) {
+        
+        /*
+        final int LENGTH = 100;
+        Random rand = new Random();
+        int[] iarr = new int[LENGTH];
+        for (int i = 0; i < iarr.length; i++) {
+            //iarr[i] = rand.nextInt(99999999);
+        }
+        */
 
-    Random rand = new Random();
-    int[] iarr = new int[LENGTH];
-    int i;
+        int[] iarr = {51, 13, 25, 73, 59, 53, 81, 92, 64, 39, 33, 38};
 
-    System.out.println("Initial array:");
-    for(i=0; i<LENGTH; i++) {
-      int fraction = (int)(200 * rand.nextDouble());
-      int randomNumber =  (int)(fraction + 0);
-      iarr[i] = randomNumber;
-      System.out.print(iarr[i] + " ");
+        //System.out.println("Initial array:");
+        //displayArray(iarr, 0, iarr.length-1);
+
+        int[] aux = new int[iarr.length]; // make an auxiliar array to improve speed
+        mergesort(iarr, aux, 0, iarr.length-1);
+
+        //System.out.println("Sorted Array:");
+        //displayArray(iarr, 0, iarr.length-1);
     }
-    System.out.println();
 
-    mergesort(iarr, 0, LENGTH-1);
-
-    System.out.println("Sorted Array:");
-    for( i=0; i<LENGTH; ++i ) {
-      System.out.print(iarr[i] + " ");
-    }
-    System.out.println();
-  }
-
-  private static void mergesort(int[] data, int start, int end) {
-    int middle;
-    int length = end-start+1;
-    if(length>1) {
-      middle = start + length/2 - 1;
-      mergesort(data, start, middle);
-      mergesort(data, middle+1, end);
+    private static void mergesort(int[] data, int[] aux, int begin, int end) {
+        if (end <= begin)
+            return;
+        
+        int middle = begin + (end - begin) / 2;
+        mergesort(data, aux, begin, middle);
+        mergesort(data, aux,  middle+1, end);
   
-      merge(data, start, middle, middle+1, end);
-    }
-  }
+        merge(data, aux, begin, middle, end);
+        displayArray(data, 0, data.length-1);
 
-  private static void merge(int[] data, int start1, int end1, int start2, int end2) {
-    int length1 = end1 - start1 + 1;
-    int length2 = end2 - start2 + 1;
-    int[] temp = new int[length1+length2];
+    }
 
-    int copied = 0;
-    int flag1 = start1;
-    int flag2 = start2;
-    int i;
+    private static void merge(int[] data, int[] aux, int begin, int middle, int end) {
+        //copy to auxiliar array
+        for (int k = begin; k <= end; k++)
+            aux[k] = data[k];
 
-    while( (flag1<=end1) && (flag2<=end2) ) {
-      if( data[flag1]<data[flag2] ) {
-        temp[copied] = data[flag1];
-        copied++;
-        flag1++;
-      } else {
-        temp[copied] = data[flag2];
-        copied++;
-        flag2++;
-      }
-    }
-     
-    while( flag1<=end1 ) {
-      temp[copied] = data[flag1];
-      copied++;
-      flag1++;
-    }
- 
-    while( flag2<=end2 ) {
-      temp[copied] = data[flag2];
-      copied++;
-      flag2++;
-    }
- 
-    //copy from temp back to data
-    for(i=0; i<(length1+length2); i++) {
-      data[start1+i] = temp[i];
-    }
-  }
+        int i = begin;
+        int j = middle + 1;
 
-  private static void displayArray(int[] data, int start, int end) {
-    int i;
-    for(i=start; i<=end; i++) {
-      System.out.print(data[i] + " ");
+        for (int k = begin; k <= end; k++) {
+            if (i > middle)
+                data[k] = aux[j++];
+            else if (j > end)
+                data[k] = aux[i++];
+            else if (aux[j] < aux[i])
+                data[k] = aux[j++];
+            else
+                data[k] = aux[i++];
+        }
     }
-    System.out.println();
-  }
+
+    private static void displayArray(int[] data, int start, int end) {
+        for (int i = start; i <= end; i++) {
+            System.out.print(data[i] + " ");
+        }
+        System.out.println();
+    }
 }
+
