@@ -3,7 +3,6 @@ import java.util.Random;
 
 class MergeSort {
     public static void main (String[] args) {
-        
         /*
         final int LENGTH = 100;
         Random rand = new Random();
@@ -32,8 +31,8 @@ class MergeSort {
         int middle = begin + (end - begin) / 2;
         mergesort(data, aux, begin, middle);
         mergesort(data, aux,  middle+1, end);
-  
         merge(data, aux, begin, middle, end);
+        
         displayArray(data, 0, data.length-1);
 
     }
@@ -46,7 +45,7 @@ class MergeSort {
         int i = begin;
         int j = middle + 1;
 
-        for (int k = begin; k <= end; k++) {
+        for (int k=begin; k<=end; k++) {
             if (i > middle)
                 data[k] = aux[j++];
             else if (j > end)
