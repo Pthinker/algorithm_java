@@ -1,3 +1,5 @@
+119. Pascal''s Triangle II
+
 Given an index k, return the kth row of the Pascal''s triangle.
 
 For example, given k = 3,
@@ -10,11 +12,7 @@ Could you optimize your algorithm to use only O(k) extra space?
 public class Solution {
     public ArrayList<Integer> getRow(int rowIndex) {
         int[] res = new int[rowIndex+1];
-        
         res[0] = 1;
-
-        if(rowIndex==0) 
-            return getList(res);
 
         for(int j=1; j<rowIndex+1; j++) {
             for(int i=j-1; i>0; i--) {

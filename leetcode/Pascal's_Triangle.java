@@ -1,3 +1,5 @@
+118. Pascal Triangle
+
 Given numRows, generate the first numRows of Pascal''s triangle.
 
 For example, given numRows = 5,
@@ -13,8 +15,8 @@ Return
 
 
 public class Solution {
-    public ArrayList<ArrayList<Integer>> generate(int numRows) {
-        ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();
+    public List<List<Integer>> generate(int numRows) {
+        ArrayList<List<Integer>> results = new ArrayList<List<Integer>>();
         
         for(int i=1; i<=numRows; i++) {
             ArrayList<Integer> result = new ArrayList<Integer>();
@@ -23,7 +25,7 @@ public class Solution {
                 results.add(result);
             } else {
                 result.add(1);
-                ArrayList<Integer> prev = results.get(results.size()-1);
+                List<Integer> prev = results.get(results.size()-1);
                 for(int j=1; j<prev.size();j++) {
                     result.add(prev.get(j) + prev.get(j-1));
                 }
