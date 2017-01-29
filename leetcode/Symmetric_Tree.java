@@ -47,8 +47,6 @@ public class Solution {
 
 public class Solution {
     public boolean isSymmetric(TreeNode root) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         if(root==null) 
             return true;
         return isSymmetric(root.left, root.right);
