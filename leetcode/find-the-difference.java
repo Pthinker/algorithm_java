@@ -19,3 +19,35 @@ Explanation:
 'e' is the letter that was added.
 
 
+public class Solution {
+    public char findTheDifference(String s, String t) {
+        int[] nums = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            ++nums[ch - 'a'];
+        }
+        char ret = 'a';
+        for (int i = 0; i < t.length(); i++) {
+            char ch = t.charAt(i);
+            --nums[ch - 'a'];
+            if (nums[ch - 'a'] < 0) {
+                ret = ch;
+                break;
+            }
+        }
+        return ret;
+    }
+}
+
+//////////////////////////////////////////////////
+// bit XOR
+public char findTheDifference(String s, String t) {
+    int ret = 0;
+    for (int i = 0; i < s.length(); i++) {
+        ret ^= s.charAt(i);
+    }
+    for (int i = 0; i < t.length(); i++) {
+        ret ^= t.charAt(i);
+    }
+    return (char)ret;
+}
