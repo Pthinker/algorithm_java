@@ -1,3 +1,5 @@
+73. Set Matrix Zeroes
+
 Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
 
 Follow up:
@@ -10,7 +12,7 @@ Could you devise a constant space solution?
 public class Solution {
     public void setZeroes(int[][] matrix) {
         boolean firstRow=false, firstColumn=false;
-        for(int i=0;i<matrix.length;i++) {
+        for(int i=0; i<matrix.length; i++) {
             if(matrix[i][0]==0) { 
                 firstColumn = true;
                 break;

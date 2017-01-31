@@ -11,8 +11,6 @@ Your function should return length = 5, and A is now [1,1,2,2,3].
 
 public class Solution {
     public int removeDuplicates(int[] A) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
 		if(A==null || A.length==0) return 0;
 		if(A.length==1) return 1;
 

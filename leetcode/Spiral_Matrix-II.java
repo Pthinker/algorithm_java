@@ -1,5 +1,6 @@
-Given an integer n, generate a square matrix filled with elements 
-from 1 to n^2 in spiral order.
+59. Spiral Matrix II
+
+Given an integer n, generate a square matrix filled with elements from 1 to n^2 in spiral order.
 
 For example,
 Given n = 3,
@@ -15,8 +16,6 @@ You should return the following matrix:
 
 public class Solution {
     public int[][] generateMatrix(int n) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         int[][] matrix = new int[n][n];
         
         int c = 1;
@@ -49,50 +48,28 @@ public class Solution {
 }
 
 ////////////////////////////////////////////////////////////////////////
-
-public class Solution {  
-    public int[][] generateMatrix(int n) {           
-        int[][] res = new int[n][n];  
+//计算环数时用n / 2来计算，若n为奇数时，此时最中间的那个点没有被算在环数里，所以最后需要单独赋值
+public class Solution {
+    public int[][] generateMatrix(int n) {
+        int[][] res = new int[n][n];
         
-        if(n<1)
-        	return res;
-          
-        int top=0, bottom=n-1, left=0, right=n-1;  
-          
-        int loop = (n+1)/2;
-          
-        for(int i=0, seq=1; i<loop; i++) {             
-            for(int j=left; j<=right; j++) {
-                res[top][j] = seq++;
-            }
-            top++;
-              
-            if(top>bottom) 
-            	return res;
-
-            for(int j=top; j<=bottom; j++) {
-                res[j][right] = seq++;  
-            }  
-            right--;  
-              
-            if(left>right) 
-                return res;
-
-            for(int j=right; j>=left; j--) {  
-                res[bottom][j] = seq++;  
-            }  
-            bottom--;  
-              
-            if(top>bottom) 
-                return res;  
-            for(int j=bottom; j>=top; j--) {  
-                res[j][left] = seq++;  
-            }  
-            left++;  
-        }  
-          
-        return res;  
-    }  
+        int val=1;
+        int p=n;
+        for(int i=0; i<n/2; ++i, p-=2) {
+            for(int col=i; col<i+p; ++col)
+                res[i][col] = val++;
+            for(int row=i+1; row<i+p; ++row)
+                res[row][i+p-1] = val++;
+            for(int col=i+p-2; col>=i; --col)
+                res[i+p-1][col] = val++;
+            for(int row=i+p-2; row>i; --row)    
+                res[row][i] = val++;
+        }
+        if (n%2!=0) {
+            res[n/2][n/2] = val;
+        }
+        return res;
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////
