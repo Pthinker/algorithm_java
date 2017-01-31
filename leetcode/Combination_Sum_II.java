@@ -1,3 +1,5 @@
+40. Combination Sum II
+
 Given a collection of candidate numbers (C) and a target number (T), find all 
 unique combinations in C where the candidate numbers sums to T.
 
@@ -18,3 +20,31 @@ A solution set is:
 [1, 1, 6]
 
 
+public class Solution {
+    public List<List<Integer>> combinationSum2(int[] a, int target) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> l = new ArrayList<Integer>();
+        Arrays.sort(a);
+        solve(a, target, 0, 0, l, res);
+        return res;
+    }  
+    public void solve(int[] a, int target, int sum, int i, List<Integer> l, List<List<Integer>> res) {  
+        if(sum == target) { 
+            res.add(new ArrayList(l));
+            return;
+        }
+
+        if(sum>target) 
+            return;  
+         
+        for(int j=i; j<a.length; j++) {
+            if(j>i && a[j]==a[j-1]) {
+                continue;
+            }
+            l.add(a[j]);
+            solve(a, target, sum+a[j], j+1, l, res);
+            l.remove(l.size()-1);
+        }  
+        return;
+    }
+}

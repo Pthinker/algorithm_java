@@ -1,19 +1,18 @@
-Given a set of candidate numbers (C) and a target number (T), find all unique 
-combinations in C where the candidate numbers sums to T.
+39. Combination Sum
+
+Given a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
 
 The same repeated number may be chosen from C unlimited number of times.
 
 Note:
-
 All numbers (including target) will be positive integers.
-Elements in a combination (a1, a2, ... , ak) must be in non-descending order. 
-(ie, a1 <= a2 <= ... <= ak).
 The solution set must not contain duplicate combinations.
-For example, given candidate set 2,3,6,7 and target 7, 
+For example, given candidate set [2, 3, 6, 7] and target 7, 
 A solution set is: 
-[7] 
-[2, 2, 3] 
-
+[
+  [7],
+  [2, 2, 3]
+]
 
 
 This is a mutation of subset sum problem. It has pseudo polynomial solution, 
@@ -84,81 +83,31 @@ public class Solution {
 }
 
 
-surely the harder version can be done by DFS or backtracking, which is 
-easier for printing the result.
+surely the harder version can be done by DFS or backtracking, which is easier for printing the result.
 Below is backtracking.
 
-public class Solution {  
-    public ArrayList<ArrayList<Integer>> combinationSum(int[] a, int target) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();  
-        ArrayList<Integer> l = new ArrayList<Integer>();  
-        Arrays.sort(a);
-        solve(a, target, 0, 0, l, res);  
-        return res;  
-    }  
-    public void solve(int[] a, int target, int sum, int i, 
-    				  ArrayList<Integer> l, ArrayList<ArrayList<Integer>> res) {  
-        if(sum == target) { 
-        	res.add(l); 
-        	return;
-        }
-
-        if(sum>target || i>=a.length) 
-        	return;  
-        
-        int n = 0;  
-        while(n*a[i]+sum <= target) {
-            solve(a, target, sum+n*a[i], i+1, l, res);  
-            ArrayList<Integer> tmp = new ArrayList<Integer>(l);  
-            l = tmp;  
-            l.add(a[i]);
-            n++;
-        }  
-        return;  
-    }     
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
 public class Solution {
-    public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, 
-    													int target) {
-        Arrays.sort(candidates);
-        ArrayList<ArrayList<Integer>> prev = new ArrayList<ArrayList<Integer>>();
-        prev.add(new ArrayList<Integer>());
-
-        return combinationSum(candidates, target, 0, prev);
-    }
-    
-    public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, 
-    							int target, int i, 
-    							ArrayList<ArrayList<Integer>> prev) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        
-        if(target==0) {
-            for(ArrayList<Integer> temp : prev) {
-                ArrayList<Integer> temp1 = new ArrayList<Integer>(temp);   
-                res.add(temp1);
-            }    
-            return res;
-        }
-
-        for(int j=i; j<candidates.length; j++) {
-            if(candidates[j] > target)
-                break;
-
-            for(ArrayList<Integer> temp : prev)
-                temp.add(candidates[j]);
-
-            ArrayList<ArrayList<Integer>> next = 
-            	combinationSum(candidates, target-candidates[j], j, prev);
-            
-            if(next.size() > 0)
-                res.addAll(next);
-            for(ArrayList<Integer> temp : prev)
-                temp.remove(temp.size()-1);
-        }
-        
+    public List<List<Integer>> combinationSum(int[] a, int target) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> l = new ArrayList<Integer>();
+        Arrays.sort(a);
+        solve(a, target, 0, 0, l, res);
         return res;
+    }  
+    public void solve(int[] a, int target, int sum, int i, List<Integer> l, List<List<Integer>> res) {  
+        if(sum == target) { 
+            res.add(new ArrayList(l));
+            return;
+        }
+
+        if(sum>target) 
+            return;  
+        
+        for(int j=i; j<a.length; j++) {
+            l.add(a[j]);
+            solve(a, target, sum+a[j], j, l, res);
+            l.remove(l.size()-1);
+        }  
+        return;
     }
 }
