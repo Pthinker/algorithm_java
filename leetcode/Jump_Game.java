@@ -1,3 +1,5 @@
+55. Jump Game
+
 Given an array of non-negative integers, you are initially positioned at the 
 first index of the array.
 
@@ -11,28 +13,29 @@ A = [2,3,1,1,4], return true.
 A = [3,2,1,0,4], return false.
 
 
-//brute force, worst case O(n^2), time limite exceeded for large test data
 public class Solution {
     public boolean canJump(int[] A) {
-        if(A==null || A.length==0)
-            return false;
-        
-        if(A.length==1)
+        if(A.length <= 1)
             return true;
-        
-        boolean[] flag = new boolean[A.length];
-        flag[0] = true;
-        
-        for(int i=0; i<A.length-1; i++) {
-            if(flag[i]) {
-                for(int j=1; j<=A[i]; j++) {
-                    if((i+j) < A.length)
-                        flag[i+j] = true;
-                }
+     
+        int max = A[0]; //max stands for the largest index that can be reached.
+     
+        for(int i=0; i<A.length; i++){
+            //if not enough to go to next
+            if(max <= i && A[i] == 0) 
+                return false;
+     
+            //update max    
+            if(i + A[i] > max){
+                max = i + A[i];
             }
+     
+            //max is enough to reach the end
+            if(max >= A.length-1) 
+                return true;
         }
-        
-        return flag[A.length-1];
+     
+        return false;    
     }
 }
 
