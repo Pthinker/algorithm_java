@@ -100,7 +100,7 @@ public class Solution {
             return;
         }
 
-        if(sum>target) 
+        if(sum>target)
             return;  
         
         for(int j=i; j<a.length; j++) {
