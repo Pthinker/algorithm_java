@@ -1,3 +1,5 @@
+105. Construct Binary Tree from Preorder and Inorder Traversal
+
 Given preorder and inorder traversal of a tree, construct the binary tree.
 
 Note:
@@ -15,15 +17,13 @@ You may assume that duplicates do not exist in the tree.
  */
 public class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if(preorder.length==0 || inorder.length==0 || 
-        		preorder.length!=inorder.length)
+        if(preorder.length==0 || inorder.length==0 || preorder.length!=inorder.length)
             return null;
         
         return build(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
     }
     
-    public TreeNode build(int[] preorder, int pl, int pr, 
-    					  int[] inorder, int il, int ir) {
+    public TreeNode build(int[] preorder, int pl, int pr, int[] inorder, int il, int ir) {
         if(pr < pl)
             return null;
 
