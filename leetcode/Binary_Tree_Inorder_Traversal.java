@@ -1,8 +1,9 @@
+94. Binary Tree Inorder Traversal
+
 Given a binary tree, return the inorder traversal of its nodes values.
 
 For example:
-Given binary tree {1,#,2,3},
-
+Given binary tree [1,null,2,3],
    1
     \
      2
@@ -11,7 +12,6 @@ Given binary tree {1,#,2,3},
 return [1,3,2].
 
 Note: Recursive solution is trivial, could you do it iteratively?
-
 
 /**
  * Definition for binary tree
@@ -26,10 +26,8 @@ Note: Recursive solution is trivial, could you do it iteratively?
 
 // recursive
 public class Solution {
-    public ArrayList<Integer> inorderTraversal(TreeNode root) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        ArrayList<Integer> res = new ArrayList<Integer>();
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<Integer>();
         traverse(root, res);
         return res;
     }
@@ -46,10 +44,8 @@ public class Solution {
 /////////////////////////////////////////////////////////////////
 
 public class Solution {
-    public ArrayList<Integer> inorderTraversal(TreeNode root) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        ArrayList<Integer> res = new ArrayList<Integer>();
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<Integer>();
         Stack<TreeNode> sk = new Stack<TreeNode>();
         
         TreeNode node = root;
