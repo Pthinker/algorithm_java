@@ -1,42 +1,17 @@
+
+
 Implement pow(x, n).
 
 
+//https://discuss.leetcode.com/topic/21837/5-different-choices-when-talk-with-interviewers
 public class Solution {
-    public double pow(double x, int n) {
-        if(n == 0) 
-            return 1.;
-
-        if(x == 0) 
-            return 0.;
-
-        if(n < 0) {
-            n = -n;
-            x = 1./x;
-        }
-        
-        double res = 1.;
-        while(n > 0) {
-            if(n%2 == 1) 
-                res *= x;
-            x *= x;
-            n >>= 1;
-        }
-        return res;
+    public double myPow(double x, int n) {
+        if (n == 0) return 1;
+        double half = myPow(x, n / 2);
+        if (n % 2 == 0) return half * half;
+        else if (n > 0) return half * half * x;
+        else return half * half / x;
     }
 }
 
-//////////////////////////////////////////////////////////////////////////
-
-public class Solution {
-    public double pow(double x, int n) {
-        if(n==0) return 1.; 
-        if(x==0.) return 0.;
-        if(n < 0) {
-            n = -n;
-            x = 1./x;
-        }
-        double temp = pow(x, n/2);
-        return n%2==0 ? temp*temp : temp*temp*x;
-    }
-}
 
