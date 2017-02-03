@@ -1,5 +1,6 @@
-Given a string containing only digits, restore it by returning all possible 
-valid IP address combinations.
+93. Restore IP Addresses
+
+Given a string containing only digits, restore it by returning all possible valid IP address combinations.
 
 For example:
 Given "25525511135",
@@ -51,15 +52,15 @@ public class Solution {
 ///////////////////////////////////////////////////////////////////////////
 
 public class Solution {
-    public ArrayList<String> restoreIpAddresses(String s) {
-        ArrayList<String> res = new ArrayList<String>();
+    public List<String> restoreIpAddresses(String s) {
+        List<String> res = new ArrayList<String>();
         if(s.length()>12 || s.length()<4) 
         	return res;
         dfs(res, "", s, 0);
         return res;
     }
 
-    public void dfs(ArrayList<String> res, String buff, String s, int count) {
+    public void dfs(List<String> res, String buff, String s, int count) {
         if(count == 3 && isValid(s)) {
             res.add(buff+s);
             return;

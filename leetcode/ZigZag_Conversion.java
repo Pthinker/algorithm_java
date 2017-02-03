@@ -1,3 +1,5 @@
+6. ZigZag Conversion
+
 The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
 
 P   A   H   N
@@ -12,8 +14,6 @@ convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 
 public class Solution {
     public String convert(String s, int nRows) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         StringBuilder result = new StringBuilder();
 
         if(s==null || s.length()==0) 

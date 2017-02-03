@@ -1,6 +1,19 @@
-Given a string S, find the longest palindromic substring in S. You may assume 
-that the maximum length of S is 1000, and there exists one unique longest 
-palindromic substring.
+5. Longest Palindromic Substring
+
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example:
+
+Input: "babad"
+
+Output: "bab"
+
+Note: "aba" is also a valid answer.
+Example:
+
+Input: "cbbd"
+
+Output: "bb"
 
 
 // DP, O(n^2) time and space
@@ -50,7 +63,7 @@ public class Solution {
         int len = s.length();
         String longest = s.substring(0, 1);
         
-        for(int i=0; i<len-1; i ++) {
+        for(int i=0; i<len-1; i++) {
             String p1 = expandAroundCenter(s, i, i);
             if (p1.length() > longest.length())
                 longest = p1;

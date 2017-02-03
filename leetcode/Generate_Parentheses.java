@@ -1,9 +1,16 @@
-Given n pairs of parentheses, write a function to generate all combinations 
-of well-formed parentheses.
+22. Generate Parentheses
+
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 
 For example, given n = 3, a solution set is:
 
-"((()))", "(()())", "(())()", "()(())", "()()()"
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
 
 
 public class Solution {
@@ -39,14 +46,14 @@ public class Solution {
 /////////////////////////////////////////////////////////////////////////////
 
 public class Solution {
-    public ArrayList<String> generateParenthesis(int n) {
-        ArrayList<String> list = new ArrayList<String>();
+    public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<String>();
         generateParenthesis("", 0, 0, n, list);
         return list;
     }
      
     private void generateParenthesis(String s, int left, int right, int n, 
-                                     ArrayList<String> list){
+                                     List<String> list){
         if(left==n && right==n) {
             list.add(s);
             return;
@@ -61,25 +68,22 @@ public class Solution {
 /////////////////////////////////////////////////////////////////////////////
 
 public class Solution {
-    public ArrayList<String> generateParenthesis(int n) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        ArrayList<String> result = new ArrayList<String>();
-        generate(result, "",0,0,n);
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<String>();
+        generate(result, "", 0, 0, n);
         return result;
     }
     
-    private static void generate(ArrayList<String> result, String prefix, 
-                                    int leftCount, int rightCount,int totalPairs){
-        if(leftCount == totalPairs){
-            for(int i = 0; i < totalPairs - rightCount;i++){
+    private void generate(List<String> result, String prefix, int leftCount, int rightCount, int totalPairs) {
+        if(leftCount == totalPairs) {
+            for(int i = 0; i < totalPairs - rightCount; i++) {
                 prefix += ")";
             }
             result.add(prefix);
             return;
         }
-        generate(result, prefix + "(", leftCount + 1, rightCount, totalPairs);
+        generate(result, prefix + "(", leftCount+1, rightCount, totalPairs);
         if(leftCount > rightCount) 
-            generate(result, prefix +")", leftCount, rightCount + 1,totalPairs);
+            generate(result, prefix +")", leftCount, rightCount+1,totalPairs);
     }
 }
