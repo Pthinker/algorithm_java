@@ -33,8 +33,8 @@ public int helper(List<NestedInteger> nestedList, int depth){
     return sum;
 }
 
-
 ///////////////////////////////////////////////
+
 //iterative
 public int depthSum(List<NestedInteger> nestedList) {
     int sum=0;
