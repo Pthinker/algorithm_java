@@ -9,7 +9,7 @@ For example,
 public class Solution {  
     public boolean canPermutePalindrome(String s) {  
         HashMap<Character, Integer> d = new HashMap<>();  
-        for(int i = 0;i < s.length(); i++) {  
+        for(int i = 0; i < s.length(); i++) {  
             if(d.containsKey(s.charAt(i)))  
                 d.put(s.charAt(i), d.get(s.charAt(i)) + 1);  
             else  

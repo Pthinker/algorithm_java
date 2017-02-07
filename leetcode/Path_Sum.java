@@ -14,8 +14,6 @@ Given a binary tree and a sum, determine if the tree has a root-to-leaf path suc
 
 public class Solution {
     public boolean hasPathSum(TreeNode root, int sum) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         if(root==null)
             return false;
 
@@ -31,8 +29,6 @@ public class Solution {
 
 public class Solution {
     public boolean hasPathSum(TreeNode root, int sum) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         if(root==null)
         	return false;
 
