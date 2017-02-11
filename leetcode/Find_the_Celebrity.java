@@ -14,12 +14,12 @@ int findCelebrity(int n) {
     int right = n - 1;
     while (left < right) {
         if(knows(left, right)) {
-            left ++;
+            left++;
         } else {
-            right --;
+            right--;
         }
     }
-    for (int i = 0; i < n; i ++) {
+    for (int i=0; i<n; i++) {
         if (i==left || (knows(i, left) && !knows(left, i))) {
             continue;
         } else {
@@ -31,31 +31,28 @@ int findCelebrity(int n) {
 
 
 ///////////////////////////////////////////////////
+
+//https://discuss.leetcode.com/topic/23534/java-solution-two-pass/1
+//The first pass is to pick out the candidate. If candidate knows i, then switch candidate. The second pass is to check whether the candidate is real.
 int findCelebrity(int n) {
-    if(n<=1) return n;
+    if(n<=1) 
+        return n;
     
     int candidate = 0;
-    
-    for(int i=1; i<n; i++){
-        
-        if ( !knows(i,candidate) ){
+    for(int i=1; i<n; i++) {
+        if ( !knows(i, candidate) ) {
             candidate = i;
         }
     }
-    
    
     for(int j=0; j<n; j++){
-        
-        if(j== candidate) continue;
+        if(j== candidate) 
+            continue;
      
         if( !knows(j,candidate) || knows(candidate,j) ){
-              //if j does not know candidate, or candidate knows j, return -1;
+            //if j does not know candidate, or candidate knows j, return -1;
             return -1;
         }
-   
     }
-   
-    
-    return candidate;
-  
+    return candidate; 
 }
