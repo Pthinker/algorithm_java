@@ -3,6 +3,20 @@
 Given two strings S and T, determine if they are both one edit distance apart.
 
 
+//https://discuss.leetcode.com/topic/30308/my-clear-java-solution-with-explanation
+/*
+ * There're 3 possibilities to satisfy one edit distance apart: 
+ * 
+ * 1) Replace 1 char:
+      s: a B c
+      t: a D c
+ * 2) Delete 1 char from s: 
+      s: a D  b c
+      t: a    b c
+ * 3) Delete 1 char from t
+      s: a   b c
+      t: a D b c
+ */
 public boolean isOneEditDistance(String s, String t) {
     for (int i = 0; i < Math.min(s.length(), t.length()); i++) {
     	if (s.charAt(i) != t.charAt(i)) {
