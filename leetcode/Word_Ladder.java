@@ -1,69 +1,76 @@
-Given two words (start and end), and a dictionary, find the length of shortest 
-transformation sequence from start to end, such that:
+127. Word Ladder
 
-Only one letter can be changed at a time
-Each intermediate word must exist in the dictionary
+Given two words (beginWord and endWord), and a dictionary''s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+
+Only one letter can be changed at a time.
+Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
 For example,
 
 Given:
-start = "hit"
-end = "cog"
-dict = ["hot","dot","dog","lot","log"]
-
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log","cog"]
 As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
 return its length 5.
 
 Note:
-
 Return 0 if there is no such transformation sequence.
 All words have the same length.
 All words contain only lowercase alphabetic characters.
+You may assume no duplicates in the word list.
+You may assume beginWord and endWord are non-empty and are not the same.
 
 
-public class Solution {  
-    public int ladderLength(String start, String end, HashSet<String> dict) {  
-        Queue<String> queue = new LinkedList<String>();    
-        Queue<Integer> length = new LinkedList<Integer>();    
-        queue.add(start);    
-        length.add(1);
-
-        while(!queue.isEmpty()) {
-            String word = queue.poll();  
-            int len = length.poll();  
-            if(canChange(word, end))  
-                return len+1;
-            
-            char[] arr = word.toCharArray();
-            for(int i=0; i<word.length(); i++) {
-                char tmp = word.charAt(i);
-                for(char c='a'; c<='z'; c++) {
-                    if (tmp == c)  
-                        continue;
-                    arr[i] = c;
-                    String str = String.valueOf(arr);
-                    if (dict.contains(str)) {  
-                        queue.add(str);
-                        length.add(len+1);
-                        dict.remove(str);
-                    }  
-                }
-                arr[i] = tmp;
-            }
-        }  
-        return 0;  
-    }  
-      
-    public boolean canChange(String start, String stop) {    
-        int diff = 0;
-        for (int i=0; i<start.length(); i++) {
-            if (start.charAt(i) != stop.charAt(i)) {    
-                if (diff >= 1)
-                    return false;    
-                else    
-                    diff++;  
-            }
+public class Solution {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        Set<String> dict = new HashSet<String>();
+        for(String w : wordList) {
+            dict.add(w);
         }
-        return true;    
+        
+        // Use queue to help BFS
+        Queue<String> queue = new LinkedList<String>();
+        queue.add(beginWord);
+        queue.add(null);
+      
+        // Mark visited word
+        Set<String> visited = new HashSet<String>();
+        visited.add(beginWord);
+      
+        int level = 1;
+      
+        while (!queue.isEmpty()) {
+            String str = queue.poll();
+        
+            if (str != null) {
+                // Modify str's each character (so word distance is 1)
+                for (int i = 0; i < str.length(); i++) {
+                    char[] chars = str.toCharArray();
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        chars[i] = c;
+                  
+                        String word = new String(chars);
+                  
+                        // Found the end word
+                        if (word.equals(endWord) && dict.contains(endWord)) return level + 1;
+                  
+                        // Put it to the queue
+                        if (dict.contains(word) && !visited.contains(word)) {
+                            queue.add(word);
+                            visited.add(word);
+                        }
+                    }
+                }
+            } else {
+                level++;
+          
+                if (!queue.isEmpty()) { 
+                    queue.add(null);
+                }
+            }
+      }
+      
+      return 0;
     }
-}  
+}
 
