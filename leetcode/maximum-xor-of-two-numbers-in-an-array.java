@@ -15,3 +15,25 @@ Output: 28
 Explanation: The maximum result is 5 ^ 25 = 28.
 
 
+//https://discuss.leetcode.com/topic/63213/java-o-n-solution-using-bit-manipulation-and-hashmap/4
+//http://www.cnblogs.com/grandyang/p/5991530.html
+public class Solution {
+    public int findMaximumXOR(int[] nums) {
+        int max = 0, mask = 0;
+        for(int i = 31; i >= 0; i--){
+            mask = mask | (1 << i);
+            Set<Integer> set = new HashSet<>();
+            for(int num : nums){
+                set.add(num & mask);
+            }
+            int tmp = max | (1 << i);
+            for(int prefix : set){
+                if(set.contains(tmp ^ prefix)) {
+                    max = tmp;
+                    break;
+                }
+            }
+        }
+        return max;
+    }
+}

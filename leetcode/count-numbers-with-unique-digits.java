@@ -14,3 +14,71 @@ Let f(k) = count of numbers with unique digits with length equals k.
 f(1) = 10, ..., f(k) = 9 * 9 * 8 * ... (9 - k + 2) [The first factor is 9 because a number cannot start with 0].
 
 
+//https://discuss.leetcode.com/topic/48001/backtracking-solution/2
+//backtracking
+public class Solution {
+    public int countNumbersWithUniqueDigits(int n) {
+        if (n > 10) {
+			return countNumbersWithUniqueDigits(10);
+		}
+		int count = 1; // x == 0
+		long max = (long) Math.pow(10, n);
+
+		boolean[] used = new boolean[10];
+
+		for (int i = 1; i < 10; i++) {
+			used[i] = true;
+			count += search(i, max, used);
+			used[i] = false;
+		}
+
+		return count;
+    }
+    
+    private static int search(long prev, long max, boolean[] used) {
+		int count = 0;
+		if (prev < max) {
+			count += 1;
+		} else {
+			return count;
+		}
+
+		for (int i = 0; i < 10; i++) {
+			if (!used[i]) {
+				used[i] = true;
+				long cur = 10 * prev + i;
+				count += search(cur, max, used);
+				used[i] = false;
+			}
+		}
+
+		return count;
+	}
+}
+
+//////////////////////////////////////////////
+
+//https://discuss.leetcode.com/topic/47983/java-dp-o-1-solution
+//match & dp
+public class Solution {
+    public int countNumbersWithUniqueDigits(int n) {
+        if (n == 0)
+            return 1;
+        
+        int res = 10;
+        int uniqueDigits = 9;
+        int availableNumber = 9;
+        int i=2;
+        while (i<=n && availableNumber > 0) {
+            uniqueDigits = uniqueDigits * availableNumber;
+            res += uniqueDigits;
+            availableNumber--;
+            i++;
+        }
+        return res;
+    }
+}
+
+
+
+

@@ -30,8 +30,7 @@ public class Solution {
                     points.get(C).get(0), points.get(C).get(1));
             if (crossProduct < 0) {
                 gotNegative = true;
-            }
-            else if (crossProduct > 0) {
+            } else if (crossProduct > 0) {
                 gotPositive = true;
             }
             if (gotNegative && gotPositive) return false;
@@ -45,8 +44,7 @@ public class Solution {
     // The cross product is a vector perpendicular to AB and BC having length |AB| * |BC| * Sin(theta) and
     // with direction given by the right-hand rule. For two vectors in the X-Y plane, the result is a
     // vector with X and Y components 0 so the Z component gives the vector's length and direction.
-    private int crossProductLength(int Ax, int Ay, int Bx, int By, int Cx, int Cy)
-    {
+    private int crossProductLength(int Ax, int Ay, int Bx, int By, int Cx, int Cy) {
         // Get the vectors' coordinates.
         int ABx = Bx - Ax;
         int ABy = By - Ay;
@@ -58,9 +56,7 @@ public class Solution {
     }
 }
 
-
-
-////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
 
 class Solution {
 public:
