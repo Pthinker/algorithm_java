@@ -8,6 +8,14 @@ Please optimize your algorithm to use less time and space. The input size may be
 
 
 //https://discuss.leetcode.com/topic/55377/simple-java-dfs-solution
+/*
+The idea is pretty simple. If we look at the order we can find out we just keep adding digit from 0 to 9 to every digit and make it a tree.
+Then we visit every node in pre-order. 
+       1        2        3    ...
+      /\        /\       /\
+   10 ...19  20...29  30...39   ....
+
+*/
 public class Solution {
     public List<Integer> lexicalOrder(int n) {
         List<Integer> res = new ArrayList<>();
