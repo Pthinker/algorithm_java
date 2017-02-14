@@ -26,7 +26,7 @@ public class Solution {
         int i = x ^ y;
         int count=0;
         while (i != 0) {
-            ++ count;
+            ++count;
             i = (i-1)&i;
         }
         return count;

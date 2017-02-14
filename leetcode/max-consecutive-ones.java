@@ -15,6 +15,28 @@ The length of input array is a positive integer and will not exceed 10,000
 
 public class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
+        if(nums==null || nums.length==0) {
+            return 0;
+        }
+        
+        int max=0;
+        int sum=0;
+        for(int i=0; i<nums.length; i++) {
+            if(sum+nums[i] > sum) {
+                max = Math.max(max, sum+nums[i]);
+                sum += nums[i];
+            } else {
+                sum = 0;
+            }
+        }
+        return max;
+    }
+}
+
+////////////////////////////////////////////
+
+public class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
         int max=0;
         int cnt=0;
         for(int i=0; i<nums.length; i++) {
