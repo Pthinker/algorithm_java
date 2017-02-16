@@ -41,7 +41,8 @@ public class Solution {
 
 
 ///////////////////////////////////////////////////////////
-//naitive method
+
+//naive method
 public class Solution {
     public String toHex(int num) {
          if (num == 0) {

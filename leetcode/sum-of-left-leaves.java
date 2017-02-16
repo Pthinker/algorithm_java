@@ -47,3 +47,33 @@ public class Solution {
         }
     }
 }
+
+//////////////
+
+public class Solution {
+    public int sumOfLeftLeaves(TreeNode root) {
+        if(root==null) {
+            return 0;
+        }
+        
+        int[] sum = new int[1];
+        travel(root.left, sum, true);
+        travel(root.right, sum, false);
+        return sum[0];
+    }
+    
+    private void travel(TreeNode node, int[] sum, boolean isLeft) {
+        if(node==null) {
+            return;
+        }
+        
+        if(node.left==null && node.right==null && isLeft) {
+            sum[0] += node.val;
+            return;
+        }
+        
+        travel(node.left, sum, true);
+        travel(node.right, sum, false);
+        return;
+    }
+}

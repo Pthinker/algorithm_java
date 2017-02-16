@@ -33,6 +33,27 @@ public class Solution {
     }
 }
 
+public class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head==null) {
+            return head;
+        }
+        
+        ListNode prev = head;
+        ListNode curr = head.next;
+        prev.next = null;
+        ListNode next = null;
+        
+        while(curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        
+        return prev;
+    }
+}
 
 /////////////////////////////////////////////////////////////////////
 

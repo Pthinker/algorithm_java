@@ -9,22 +9,25 @@ Minimize the total number of operations.
 
 public class Solution {
     public void moveZeroes(int[] nums) {
-        int curr = -1;
+        if(nums==null || nums.length==0) {
+            return;
+        }
+        
+        int idx=0;
         for(int i=0; i<nums.length; i++) {
-            if(nums[i]==0) {
-                if(curr<0) {
-                    curr=i;
-                }
-            } else {
-                if(curr>=0) {
-                    nums[curr] = nums[i];
-                    nums[i]=0;
-                    curr+=1;
-                }
+            if(nums[i]!=0) {
+                nums[idx] = nums[i];
+                idx++;
             }
+        }
+        while(idx<nums.length) {
+            nums[idx]=0;
+            idx++;
         }
     }
 }
+
+//////////////////////////////////////////////
 
 
 public class Solution {

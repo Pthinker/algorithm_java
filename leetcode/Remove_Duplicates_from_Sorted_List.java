@@ -21,23 +21,18 @@ Given 1->1->2->3->3, return 1->2->3.
 
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         if(head==null) return null;
         
-        ListNode tail = head;
-        ListNode pivot = head.next;
-        
-        while(pivot!=null) {
-            if(pivot.val!=tail.val) {
-                tail.next = pivot;
-                tail = pivot;
+        ListNode cur = head;
+        while(cur.next != null) {
+            ListNode next = cur.next;
+            if(next.val==cur.val) {
+                cur.next = next.next;
+                next.next = null;
+            } else {
+                cur = next;
             }
-            
-            pivot = pivot.next;
         }
-        
-        tail.next = null;
         return head;
     }
 }

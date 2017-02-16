@@ -22,7 +22,8 @@ public class Solution {
 }
 
 /////////////////////////////////////////////
-//将这个少了一个数的数组合0到n之间完整的数组异或一下，那么相同的数字都变为0了，剩下的就是少了的那个数字了
+
+//https://discuss.leetcode.com/topic/24535/4-line-simple-java-bit-manipulate-solution-with-explaination
 public class Solution {
     public int missingNumber(int[] nums) {
         int res = 0;

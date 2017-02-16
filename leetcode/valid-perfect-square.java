@@ -15,6 +15,7 @@ Returns: False
 
 
 // search up to sqrt(num)
+//TLE
 public class Solution {
     public boolean isPerfectSquare(int num) {
         for (int i = 1; i <= (num/i); ++i) {
@@ -25,10 +26,11 @@ public class Solution {
 }
 
 /////////////////////////////////////////
+
 //binary search
 public class Solution {
     public boolean isPerfectSquare(int num) {
-        long left = 0, right = num;
+        long left = 1, right = num;
         while (left <= right) {
             long mid = left + (right - left) / 2, t = mid * mid;
             if (t == num) return true;

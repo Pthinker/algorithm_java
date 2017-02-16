@@ -7,7 +7,7 @@ Input: "abab"
 
 Output: True
 
-Explanation: It's the substring "ab" twice.
+Explanation: It''s the substring "ab" twice.
 Example 2:
 Input: "aba"
 
@@ -17,8 +17,39 @@ Input: "abcabcabcabc"
 
 Output: True
 
-Explanation: It's the substring "abc" four times. (And the substring "abcabc" twice.)
+Explanation: It''s the substring "abc" four times. (And the substring "abcabc" twice.)
 
+
+
+public class Solution {
+    public boolean repeatedSubstringPattern(String str) {
+        if(str==null) {
+            return false;
+        }
+        
+        int l = str.length();
+        for(int i=1; i<=l/2; i++) {
+            if(l%i!=0)
+                continue;
+                
+            String pat = str.substring(0, i);
+            boolean found = true;
+            for(int j=i; j<l; j+=i) {
+                if(!str.substring(j, j+i).equals(pat)) {
+                    found=false;
+                    break;
+                }
+            }
+            if(found) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+}
+
+/////////////////////////////////////////////////////////////////
 
 public class Solution {
     public boolean repeatedSubstringPattern(String str) {

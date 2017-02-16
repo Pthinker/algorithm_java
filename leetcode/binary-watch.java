@@ -19,6 +19,7 @@ The hour must not contain a leading zero, for example "01:00" is not valid, it s
 The minute must be consist of two digits and may contain a leading zero, for example "10:2" is not valid, it should be "10:02".
 
 
+//https://discuss.leetcode.com/topic/59494/3ms-java-solution-using-backtracking-and-idea-of-permutation-and-combination
 public class Solution {
     public List<String> readBinaryWatch(int num) {
         List<String> res = new ArrayList<>();

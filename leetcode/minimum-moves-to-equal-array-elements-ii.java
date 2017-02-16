@@ -18,6 +18,20 @@ Only two moves are needed (remember each move increments or decrements one eleme
 [1,2,3]  =>  [2,2,3]  =>  [2,2,2]
 
 
+//https://discuss.leetcode.com/topic/66557/java-o-n-solution-short
+public class Solution {
+    public int minMoves(int[] nums) {
+        if (nums.length == 0) return 0;
+        int min = nums[0];
+        for (int n : nums) min = Math.min(min, n);
+        int res = 0;
+        for (int n : nums) res += n - min;
+        return res;
+    }
+}
+
+/////////////////////////////////
+
 public class Solution {
     public int minMoves2(int[] nums) {
         Arrays.sort(nums);
@@ -31,6 +45,7 @@ public class Solution {
 
 
 /////////////////////////////////
+
 //o(n)
 public class Solution {
     public int minMoves2(int[] nums) {

@@ -23,6 +23,7 @@ public class Solution {
         	} else {
         		advance = 0;
         		digits[i] = sum;
+                break;
         	}
         }
 

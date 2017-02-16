@@ -12,3 +12,4 @@ Return 3.
 The three ranges are : [0, 0], [2, 2], [0, 2] and their respective sums are: -2, -1, 2.
 
 
+//https://discuss.leetcode.com/topic/33738/share-my-solution

@@ -15,17 +15,13 @@ Two binary trees are considered equal if they are structurally identical and the
  */
 public class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-
         if(p==null && q==null)
-    		return true;
-    	else if(p==null || q==null)
-    		return false;
-    	else
-    		if(p.val==q.val)
- 		        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);       
-            else
-                return false;
+            return true;
+        else if(p==null || q==null)
+            return false;
+        else if(p.val!=q.val)
+            return false;
+        else
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 }
