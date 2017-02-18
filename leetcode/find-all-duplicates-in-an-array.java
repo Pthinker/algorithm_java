@@ -20,7 +20,7 @@ public class Solution {
         for(int i=0; i<nums.length; i++) {
             int idx = Math.abs(nums[i])-1;
             if(nums[idx]<0) {
-                res.add(Math.abs(nums[i]));
+                res.add(idx+1);
             } else {
                 nums[idx] = -nums[idx];
             }

@@ -43,10 +43,27 @@ public class Solution {
     }
 }
 
+//mine
+public class Solution {
+    public int minMoves2(int[] nums) {
+        if(nums==null || nums.length==0) {
+            return 0;
+        }
+        
+        Arrays.sort(nums);
+        int mid = (nums.length-1)/2;
+        int res = 0;
+        for(int num: nums) {
+            res += Math.abs(num-nums[mid]);
+        }
+        return res;
+    }
+}
 
 /////////////////////////////////
 
-//o(n)
+//https://discuss.leetcode.com/topic/68758/java-o-n-time-using-quickselect
+//o(n): use quick select to find median
 public class Solution {
     public int minMoves2(int[] nums) {
         int sum = 0;

@@ -70,8 +70,9 @@ public class HitCounter {
 
 ////////////////////////////////////////////////////////////
 
-//https://discuss.leetcode.com/topic/48752/simple-java-solution-with-explanation/2
-public class HitCounter {
+//https://discuss.leetcode.com/topic/48752/simple-java-solution-with-explanation
+//downside is that queue can be very large
+pup blic class HitCounter {
     Queue<Integer> q = null;
     /** Initialize your data structure here. */
     public HitCounter() {
