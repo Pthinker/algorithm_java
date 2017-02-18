@@ -17,12 +17,12 @@ For the purpose of this problem, assume that your function returns 0 when the re
 
 
 public class Solution {
-    public int reverse(int n) {
+    public int reverse(int x) {
         long reversed_n = 0;
         
-        while (n != 0) {
-            reversed_n = reversed_n * 10 + n % 10;
-            n = n / 10;
+        while (x != 0) {
+            reversed_n = reversed_n * 10 + x % 10;
+            x = x / 10;
         }
         
         if(reversed_n>Integer.MAX_VALUE || reversed_n<Integer.MIN_VALUE) {

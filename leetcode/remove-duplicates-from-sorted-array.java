@@ -19,33 +19,10 @@ public class Solution {
         int curr=0;
         for(int i=1; i<nums.length; i++) {
             if(nums[i]!=nums[curr]) {
-                int tmp = nums[curr+1];
-                nums[curr+1] = nums[i];
-                nums[i] = tmp;
                 curr++;
+                nums[curr] = nums[i];
             }
         }
         return curr+1;
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////
-
-public class Solution {
-    public int removeDuplicates(int[] A) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        if(A.length<2)
-            return A.length;
-        
-        int prev = 0;
-        for(int i=1; i<A.length; i++) {
-            if(A[i]!=A[prev]) {
-                prev += 1;
-                A[prev] = A[i];
-            }
-        }
-        
-        return prev + 1;
     }
 }

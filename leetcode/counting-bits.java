@@ -17,17 +17,23 @@ Divide the numbers in ranges like [2-3], [4-7], [8-15] and so on. And try to gen
 Or does the odd/even status of the number help you in calculating the number of 1s?
 
 
-//https://discuss.leetcode.com/topic/40195/how-we-handle-this-question-on-interview-thinking-process-dp-solution/2
+/*
+每个数字的二进制1的个数相当于他右移一位的数字的1的个数加上其二进制表示的最右端数字
+举例：
+5： 101
+10： 1010 右移一位为101，加上0，为2个
+11： 1011 右移一位为101，加上1，为3个
+23： 10111 右移一位为1011，加上1，为4个
+*/
 public class Solution {
     public int[] countBits(int num) {
-        int result[] = new int[num + 1];
-        int offset = 1;
-        for (int index = 1; index < num + 1; ++index){
-            if (offset * 2 == index){
-                offset *= 2;
-            }
-            result[index] = result[index - offset] + 1;
-        }
+        if(num < 0) return new int[]{0};
+        int[] result = new int[num + 1];
+        result[0] = 0;
+        if(num > 0)
+            result[1] = 1;
+        for(int i = 2; i<=num; i++)
+            result[i] = result[i>>1] + (i&1);
         return result;
     }
 }

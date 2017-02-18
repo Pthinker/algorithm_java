@@ -28,9 +28,6 @@ public class Solution {
                 }
                 s2.append(count + "");
                 s2.append(c);
-                if (j == len - 1) {
-                    break;
-                }
                 j++;
             }
             s1 = s2;

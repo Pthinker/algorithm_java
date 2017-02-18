@@ -18,9 +18,8 @@ public class Solution {
         StringBuilder sb = new StringBuilder();
  
         while(n > 0){
-            n--;
-            char ch = (char) (n % 26 + 'A');
-            n /= 26;
+            char ch = (char) ((n-1) % 26 + 'A');
+            n = (n-1)/26;
             sb.append(ch);
         }
      

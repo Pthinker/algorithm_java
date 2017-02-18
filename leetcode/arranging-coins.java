@@ -35,3 +35,32 @@ public class Solution {
         return (int)((-1 + Math.sqrt(1 + 8 * (long)n)) / 2);
     }
 }
+
+////////////////////////////////////////////
+
+//binary search
+public class Solution {
+    public int arrangeCoins(int n) {
+        //convert int to long to prevent integer overflow
+        long nLong = (long)n;
+        
+        long st = 1;
+        long ed = nLong;
+        
+        long mid = 0;
+        
+        while (st <= ed){
+            mid = st + (ed - st) / 2;
+            long total = mid * (mid + 1);
+            if(total==2*nLong) {
+                return (int)mid;
+            }else if ( total < 2 * nLong){
+                st = mid + 1;
+            }else{
+                ed = mid - 1;
+            }
+        }
+        
+        return (int)ed;
+    }
+}

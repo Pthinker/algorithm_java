@@ -41,6 +41,7 @@ public class Solution {
 }
 
 /////////////////////////////////////////////////////////////////////////////////
+
 //优化后的方法为：对于每一个节点，我们递归获得左右子树的深度，如果子树是平衡的，则返回真实的深度，若不平衡，直接返回-1
 public class Solution {
     public boolean isBalanced(TreeNode root) {

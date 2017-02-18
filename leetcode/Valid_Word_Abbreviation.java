@@ -24,7 +24,6 @@ Given s = "apple", abbr = "a2e":
 Return false.
 
 
-
 public class Solution {
     public boolean validWordAbbreviation(String word, String abbr) {
         int i = 0, j = 0;

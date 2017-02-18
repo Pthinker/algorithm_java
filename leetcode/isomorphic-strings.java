@@ -28,7 +28,7 @@ public class Solution {
                     return false;
                 }
             } else {
-                if(charSet.contains(t.charAt(i)) && (t.charAt(i)!=s.charAt(i))) {
+                if(charSet.contains(t.charAt(i))) {
                     return false;
                 } else {
                     map.put(s.charAt(i), t.charAt(i));

@@ -14,13 +14,14 @@ public class Solution {
         int res = 0;
         for(int i=0; i<32; i++) {
             res = res<<1 | (n & 1);
-            n = n>>1;
+            n = n>>>1;
         }
         return res;
     }
 }
 
 //////////////////////////////////////////////////////////////
+
 //follow up: 反复要用到的东西记下来就行了，所以我们用Map记录之前反转过的数字和结果。更好的优化方法是将其按照Byte分成4段存储，节省空间
 // cache
 private final Map<Byte, Integer> cache = new HashMap<Byte, Integer>();

@@ -28,16 +28,16 @@ public class MinStack {
     
     public void push(int x) {
         s1.push(x);
-        if (s2.empty() || x <= s2.peek()) {
+        if(s2.empty()) {
             s2.push(x);
+        } else {
+            s2.push(x>=s2.peek()? s2.peek() : x);
         }
     }
     
     public void pop() {
-        if (s1.peek() == s2.peek()) {
-            s2.pop();
-        }
         s1.pop();
+        s2.pop();
     }
     
     public int top() {

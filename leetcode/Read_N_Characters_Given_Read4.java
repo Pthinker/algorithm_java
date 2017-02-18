@@ -9,17 +9,21 @@ The read function will only be called once for each test case.
 
 public class Solution extends Reader4 {
     public int read(char[] buf, int n) {
-        char[] buf4 = new char[4];
-        int offset = 0;
+        char[] buffer = new char[4];
+        boolean endOfFile = false;
+        int readBytes = 0;
         
-        while (true) {
-            int size = read4(buf4);
-            for (int i = 0; i < size && offset < n; i++) {
-                buf[offset++] = buf4[i];
+        while (readBytes < n && !endOfFile) {
+            int currReadBytes = read4(buffer);
+            if (currReadBytes !=4) {
+                endOfFile = true;
             }
-            if (size == 0 || offset == n) {
-                return offset;
+            int length = Math.min(n - readBytes, currReadBytes);
+            for (int i=0; i<length; i++) {
+                buf[readBytes + i] = buffer[i];
             }
+            readBytes += length;
         }
+        return readBytes;
     }
 }
