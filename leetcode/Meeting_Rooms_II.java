@@ -7,7 +7,7 @@ Given [[0, 30],[5, 10],[15, 20]],
 return 2.
 
 
-//https://discuss.leetcode.com/topic/35253/explanation-of-super-easy-java-solution-beats-98-8-from-pinkfloyda/2
+//https://discuss.leetcode.com/topic/35253/explanation-of-super-easy-java-solution-beats-98-8-from-pinkfloyda
 public class Solution {
     public int minMeetingRooms(Interval[] intervals) {
         int[] starts = new int[intervals.length];

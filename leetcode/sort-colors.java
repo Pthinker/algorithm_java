@@ -32,6 +32,7 @@ public class Solution {
 }
 
 //////////////////////////////////////////////////////////
+
 //follow up: scan array once
 public class Solution {
     public void sortColors(int[] nums) {

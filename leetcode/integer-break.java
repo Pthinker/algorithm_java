@@ -11,6 +11,29 @@ There is a simple O(n) solution to this problem.
 You may check the breaking results of n ranging from 7 to 10 to discover the regularities.
 
 
+//DP
+//https://segmentfault.com/a/1190000005763103
+//dp[i] = Max(dp[k] * dp[i - k], k * (i - k), dp[k] * (i - k), k * (dp[i - k])), k取值从[1, i / 2]闭区间
+public class Solution {
+    public int integerBreak(int n) {
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 1;
+        for (int i = 3; i <= n; i++) {
+            int max = Integer.MIN_VALUE;
+            for (int k = 1; k <= i / 2; k++) {
+                int tmpMax = Math.max(dp[k] * dp[i-k], k * (i-k));
+                tmpMax = Math.max(tmpMax, dp[k] * (i-k));
+                tmpMax = Math.max(tmpMax, dp[i-k] * k);
+                max = Math.max(tmpMax, max);
+            }
+            dp[i] = max;
+        }
+        return dp[n];
+    }
+}
+
 //http://www.cnblogs.com/grandyang/p/5411919.html
 //math
 public class Solution {

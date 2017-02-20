@@ -14,7 +14,7 @@ Let f(k) = count of numbers with unique digits with length equals k.
 f(1) = 10, ..., f(k) = 9 * 9 * 8 * ... (9 - k + 2) [The first factor is 9 because a number cannot start with 0].
 
 
-//https://discuss.leetcode.com/topic/48001/backtracking-solution/2
+//https://discuss.leetcode.com/topic/48001/backtracking-solution
 //backtracking
 public class Solution {
     public int countNumbersWithUniqueDigits(int n) {
@@ -59,7 +59,7 @@ public class Solution {
 //////////////////////////////////////////////
 
 //https://discuss.leetcode.com/topic/47983/java-dp-o-1-solution
-//match & dp
+//math & dp
 public class Solution {
     public int countNumbersWithUniqueDigits(int n) {
         if (n == 0)

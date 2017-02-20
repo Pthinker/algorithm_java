@@ -22,7 +22,7 @@ Length of the array will not exceed 10^4.
 
 4:     0 1 0 0
 
-14:   1 1 1 0
+14:    1 1 1 0
 
 2:     0 0 1 0
 

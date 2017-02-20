@@ -46,18 +46,17 @@ toe.move(2, 1, 1); -> Returns 1 (player 1 wins)
 |X| |O|
 |O|O| | // Player 1 makes a move at (2, 1).
 |X|X|X|
+
 Follow up:
 Could you do better than O(n2) per move() operation?
 
 Hint:
-
 Could you trade extra space such that move() operation can be done in O(1)?
 You need two arrays: int rows[n], int cols[n], plus two variables: diagonal, anti_diagonal.
 
 
 
 public class TicTacToe {
-
 	private int[] rows;
 	private int[] cols;
 	private int size;

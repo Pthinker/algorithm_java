@@ -37,3 +37,7 @@ public class Solution {
 }
 
 
+///////////////////////////
+
+o(nlogn)
+//https://segmentfault.com/a/1190000003819886

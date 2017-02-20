@@ -12,30 +12,31 @@ Although the above answer is in lexicographical order, your answer could be in a
 
 
 public class Solution {
-    public ArrayList<String> letterCombinations(String digits) {
-        Hashtable<Integer, String> table = new Hashtable<Integer, String>();
-        ArrayList<String> res = new ArrayList<String>();
-        table.put(2, "abc");
-        table.put(3, "def");
-        table.put(4, "ghi");
-        table.put(5, "jkl");
-        table.put(6, "mno");
-        table.put(7, "pqrs");
-        table.put(8, "tuv");
-        table.put(9, "wxyz");
+    public List<String> letterCombinations(String digits) {
+        List<String> res = new ArrayList<String>();
+        if(digits==null || digits.length()==0) return res;
+        
+        Map<Character, String> table = new HashMap<Character, String>();
+        table.put('2', "abc");
+        table.put('3', "def");
+        table.put('4', "ghi");
+        table.put('5', "jkl");
+        table.put('6', "mno");
+        table.put('7', "pqrs");
+        table.put('8', "tuv");
+        table.put('9', "wxyz");
         
         dfs(res, table, digits, "", 0);
         return res;
     }
 
-    public void dfs(ArrayList<String> res, Hashtable<Integer,String> table, 
-                    String s, String buff, int count) {
+    public void dfs(List<String> res, Map<Character, String> table, String s, String buff, int count) {
         if(count == s.length()) {
             res.add(buff);
             return;
         }
 
-        for(char c: table.get(s.charAt(count)-'0').toCharArray())
+        for(char c: table.get(s.charAt(count)).toCharArray())
             dfs(res, table, s, buff+c, count+1);
     }
 }

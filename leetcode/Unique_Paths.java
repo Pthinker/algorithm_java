@@ -13,11 +13,10 @@ public class Solution {
 
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
-                if(i == 0 && j == 0){
+                if(i == 0 || j == 0){
                     sum[i][j] = 1;
                 } else {
-                    sum[i][j] = (i > 0 ? sum[i - 1][j] : 0) + 
-                                (j > 0 ? sum[i][j - 1] : 0);
+                    sum[i][j] = sum[i - 1][j] + sum[i][j - 1];
                 }
             }
         }

@@ -9,27 +9,44 @@ Your runtime complexity should be less than O(n2).
 There is only one duplicate number in the array, but it could be repeated more than once.
 
 
+//modify the array
+public class Solution {
+    public int findDuplicate(int[] nums) {
+        for(int i=0; i<nums.length; i++) {
+            int idx = Math.abs(nums[i])-1;
+            if(nums[idx]<0){
+                return idx+1;
+            } else {
+                nums[idx] = -nums[idx];
+            }
+        }
+        return -1;
+    }
+}
+
+////////////////////////////////////////////////////////////
+
 //https://discuss.leetcode.com/topic/25580/two-solutions-with-explanation-o-nlog-n-and-o-n-time-o-1-space-without-changing-the-input-array
-class Solution(object):
-    def findDuplicate(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        low = 1
-        high = len(nums)-1
-        
-        while low < high:
-            mid = low+(high-low)/2
-            count = 0
-            for i in nums:
-                if i <= mid:
-                    count+=1
-            if count <= mid:
-                low = mid+1
-            else:
-                high = mid
-        return low
+public class Solution {
+    public int findDuplicate(int[] nums) {
+        int min=1, max=nums.length-1;
+        while(min < max){
+            int mid = min + (max - min) / 2;
+            int cnt = 0;
+            for(int i = 0; i < nums.length; i++){
+                if(nums[i] <= mid){
+                    cnt++;
+                }
+            }
+            if(cnt > mid){
+                max = mid;
+            } else {
+                min = mid + 1;
+            }
+        }
+        return min;
+    }
+}
 
 ////////////////////////////////////////////////////////////
 

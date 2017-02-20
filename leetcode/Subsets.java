@@ -48,30 +48,7 @@ public class Solution {
 }
 
 ///////////////////////////////////////////////////////////////////////////
-public class Solution {
-    public List<List<Integer>> subsets(int[] nums) {
-        // write your code here
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        result.add(new ArrayList<Integer>());
-        if (nums == null || nums.length== 0) {
-            return result;
-        }
-        Arrays.sort(nums);
-        helper(result, nums, new ArrayList<Integer>(), 0);
-        return result;
-    }
-    
-    private void helper(List<List<Integer>> result, int[] nums, List<Integer> cur, int i) {
-        for (int j=i; j<nums.length; j++) {
-            cur.add(nums[j]);
-            result.add(new ArrayList<Integer>(cur));
-            helper(result, nums, cur, j + 1);
-            cur.remove(cur.size()-1);
-        }
-    }
-}
 
-///////////////////////////////////////////////////////////////////////////
 // Iterative:我们可以一位一位的网上叠加，比如对于题目中给的例子[1,2,3]来说，最开始是空集，那么我们现在要处理1，就在空集上加1，为[1]，现在我们有两个自己[]和[1]，下面我们来处理2，我们在之前的子集基础上，每个都加个2，可以分别得到[2]，[1, 2]，那么现在所有的子集合为[], [1], [2], [1, 2]，同理处理3的情况可得[3], [1, 3], [2, 3], [1, 2, 3], 再加上之前的子集就是所有的子集合了
 public class Solution {
     public List<List<Integer>> subsets(int[] S) {
@@ -100,38 +77,5 @@ public class Solution {
         res.add(new ArrayList<Integer>());
         
         return res;
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////
-
-public class Solution {  
-    public ArrayList<ArrayList<Integer>> subsets(int[] S) {  
-        // Start typing your Java solution below  
-        // DO NOT write main() function  
-        ArrayList<ArrayList<Integer>> results = 
-            new ArrayList<ArrayList<Integer>>();  
-        boolean[] visit = new boolean[S.length];  
-        work(S, visit, 0, results);  
-        return results;  
-    }  
-      
-    public void work(int[] S, boolean[] visit, int index, 
-                     ArrayList<ArrayList<Integer>> results) {  
-        if (index >= S.length) {  
-            ArrayList<Integer> item = new ArrayList<Integer>();  
-            for (int i=0; i<S.length; i++)  
-                if (visit[i])  
-                    item.add(S[i]);  
-            Collections.sort(item);  
-            results.add(item);  
-            return;  
-        }
-
-        visit[index] = false;  
-        work(S, visit, index+1, results);
-          
-        visit[index] = true;  
-        work(S, visit, index+1, results);  
     }
 }

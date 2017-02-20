@@ -39,6 +39,31 @@ After calling your function, the tree should look like:
  * }
  */
 
+
+//mine
+public class Solution {
+    public void connect(TreeLinkNode root) {
+        if(root==null) return;
+        
+        TreeLinkNode start = root;
+        while(start.left!=null) {
+            TreeLinkNode cur = start;
+            while(cur!=null) {
+                cur.left.next = cur.right;
+                if(cur.next == null) {
+                    cur.right.next = null;
+                } else {
+                    cur.right.next = cur.next.left;
+                }
+                cur = cur.next;
+            }
+            start = start.left;
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////////
+
 // Iterative
 public class Solution {
     public void connect(TreeLinkNode root) {

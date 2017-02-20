@@ -16,11 +16,15 @@ Given [5, 4, 3, 2, 1],
 return false.
 
 
-//https://discuss.leetcode.com/topic/37426/concise-java-solution-with-comments/2
+//https://discuss.leetcode.com/topic/37426/concise-java-solution-with-comments
 /*
 The main idea is keep two values when check all elements in the array: the minimum value min until now and the second minimum value secondMin from the minimum value's position until now. Then if we can find the third one that larger than those two values at the same time, it must exists the triplet subsequence and return true.
 
 What need to be careful is: we need to include the condition that some value has the same value with minimum number, otherwise this condition will cause the secondMin change its value.
+
+C1 = so far best candidate of end element of a one-cell subsequence to form a triplet subsequence
+
+C2 = so far best candidate of end element of a two-cell subsequence to form a triplet subsequence
 */
 public class Solution {
     public boolean increasingTriplet(int[] nums) {

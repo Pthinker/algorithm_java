@@ -14,6 +14,37 @@ For example,
 ]
 
 
+// mine
+public class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(nums==null || nums.length==0) return res;
+        
+        boolean[] picked = new boolean[nums.length];
+        run(nums, picked, res, new ArrayList<Integer>());
+        return res;
+    }
+    
+    private void run(int[] nums, boolean[] picked, List<List<Integer>> res, List<Integer> l) {
+        if(l.size()==nums.length) {
+            res.add(new ArrayList<Integer>(l));
+            return;
+        }
+        
+        for(int i=0; i<nums.length; i++) {
+            if(!picked[i]) {
+                l.add(nums[i]);
+                picked[i] = true;
+                run(nums, picked, res, l);
+                picked[i] = false;
+                l.remove(l.size()-1);
+            }
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////
+
 public class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();

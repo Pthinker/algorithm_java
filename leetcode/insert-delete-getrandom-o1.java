@@ -34,7 +34,7 @@ randomSet.getRandom();
 
 public class RandomizedSet {
     List<Integer> arr;
-    Map<Integer, Integer>  hash;
+    Map<Integer, Integer> hash;
     Random rand = new Random();
     
     /** Initialize your data structure here. */

@@ -47,3 +47,23 @@ public class Solution {
         return count;
     }
 }
+
+
+////////////////////
+
+//python
+class Solution(object):
+    def magicalString(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        ms = '122'
+        p = 2
+        while len(ms) < n:
+            ms += str(3 - int(ms[-1])) * int(ms[p])
+            p += 1
+        return ms[:n].count('1')
+
+
+
