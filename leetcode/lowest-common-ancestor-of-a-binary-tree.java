@@ -43,15 +43,7 @@ public class Solution {
 ////////////////////////////////////////////////////////////////////////////////
 
 //上述代码可以进行优化一下，在找完左子树的共同父节点时如果结果存在，且不是p或q，那么不用再找右子树了，直接返回这个结果即可，同理，对找完右子树的结果做同样处理
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+
 public class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) 

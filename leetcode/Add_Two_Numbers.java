@@ -20,6 +20,43 @@ Output: 7 -> 0 -> 8
  * }
  */
 
+//mine
+public class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if(l1==null) {
+            return l2;
+        }
+        if(l2==null) {
+            return l1;
+        }
+        
+        ListNode dummy = new ListNode(-1);
+        ListNode prev = dummy;
+        int adv = 0;
+        
+        while(l1!=null || l2!=null) {
+            int sum = adv;
+            if(l1!=null) {
+                sum+=l1.val;
+                l1=l1.next;
+            }
+            if(l2!=null) {
+                sum+=l2.val;
+                l2=l2.next;
+            }
+            adv = sum/10;
+            prev.next = new ListNode(sum%10);
+            prev = prev.next;
+        }
+        if(adv>0) {
+            prev.next = new ListNode(adv);
+        }
+        return dummy.next;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if(l1==null) return l2;
@@ -63,65 +100,6 @@ public class Solution {
             tail.next = new ListNode(adv);
         
         return head;
-    }
-}
-
-//////////////////////////////////////////////////////////////////////////////
-
-public class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        ListNode p1 = l1;
-        ListNode p2 = l2;
-        int add = 0;
-        ListNode head = new ListNode(0);
-        ListNode tail = head;
-
-        while(p1!=null && p2!=null) {
-            int value = p1.val + p2.val + add;
-        	if(value>9) {
-        		add = 1;
-        		value = value - 10;
-        	} else {
-        		add = 0;
-        	}
-        	ListNode node = new ListNode(value);
-        	tail.next = node;
-        	tail = node;
-        	p1 = p1.next;
-        	p2 = p2.next;
-        }
-
-        ListNode p = null;
-
-        if(p1!=null) {
-        	p = p1;
-        } else if (p2!=null) {
-        	p = p2;
-        } 
-
-        while(p!=null) {
-        	int value = p.val + add;
-        	if(value>9) {
-        		add = 1;
-       			value = value - 10;
-       		} else {
-        		add = 0;
-       		}
-       		ListNode node = new ListNode(value);
-       		tail.next = node;
-       		tail = node;
-            p = p.next;
-       	}
-
-       	if(add>0) {
-       		ListNode node = new ListNode(1);
-       		tail.next = node;
-       		tail = node;
-       	}
-
-        return head.next;
     }
 }
 

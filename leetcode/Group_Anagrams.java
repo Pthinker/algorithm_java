@@ -29,10 +29,9 @@ public class Solution {
             map.put(key, list);
         }
         List<List<String>> res = new ArrayList<List<String>>();
-        // 将列表按单词排序
         for(String key : map.keySet()){
             List<String> curr = map.get(key);
-            Collections.sort(curr);
+            //Collections.sort(curr);
             res.add(curr);
         }
         return res;

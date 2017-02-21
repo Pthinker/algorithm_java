@@ -36,3 +36,27 @@ public class Solution {
     }
 }
 
+////////////////////////////////////////////////////////////////////////
+
+public class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount+1];
+        dp[0] = 0;
+        for(int i=1; i<=amount; i++) {
+            dp[i] = Integer.MAX_VALUE;
+        }
+        
+        for(int i=0; i<dp.length-1; i++) {
+            if(dp[i] == Integer.MAX_VALUE) {
+                continue;
+            }
+            for(int coin : coins) {
+                if( (i+(long)coin) <= (dp.length-1)) {
+                    dp[i+coin] = Math.min(dp[i+coin], dp[i]+1);
+                }
+            }
+        }
+        
+        return dp[dp.length-1]==Integer.MAX_VALUE? -1 : dp[dp.length-1];
+    }
+}

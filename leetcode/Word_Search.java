@@ -20,6 +20,47 @@ word = "SEE", -> returns true,
 word = "ABCB", -> returns false.
 
 
+//mine
+public class Solution {
+    public boolean exist(char[][] board, String word) {
+        if(board==null || board.length==0 || word==null || word.length()==0) return false;
+        
+        int m = board.length;
+        int n= board[0].length;
+        for(int i=0; i<m; i++) {
+            for(int j=0; j<n; j++) {
+                if(dfs(board, i, j, word, 0)) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    private boolean dfs(char[][] board, int row, int col, String word, int pos) {
+        if(pos>=word.length()) return true;
+        if(row<0 || row>=board.length || col<0 || col>=board[0].length) return false;
+        int[][] dirs = {{-1,0}, {0, -1}, {1, 0}, {0, 1}};
+        if(board[row][col]==word.charAt(pos)) {
+            board[row][col] = ' ';
+            for(int[] dir : dirs) {
+                int x = row + dir[0];
+                int y = col + dir[1];
+                if(dfs(board, x, y, word, pos+1)) {
+                    return true;
+                }
+            }
+            board[row][col] = word.charAt(pos);
+            return false;
+        } else {
+            return false;
+        }
+    }
+}
+
+/////////////////////////////////////////////////////
+
 public class Solution {
     public boolean exist(char[][] board, String word) {
         boolean[][] visited = new boolean[board.length][board[0].length];
