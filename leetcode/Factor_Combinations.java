@@ -57,7 +57,7 @@ public void helper(List<List<Integer>> result, List<Integer> item, int n, int st
         return;
     }
     
-    for (int i = start; i <= n; ++i) {
+    for (int i = start; i <= Math.sqrt(n); ++i) {
         if (n % i == 0) {
             item.add(i);
             helper(result, item, n/i, i);

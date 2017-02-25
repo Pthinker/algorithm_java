@@ -13,7 +13,10 @@ maxProfit = 3
 transactions = [buy, sell, cooldown, buy, sell]
 
 
-//https://discuss.leetcode.com/topic/30421/share-my-thinking-process/2
+//https://discuss.leetcode.com/topic/30421/share-my-thinking-process
+//https://discuss.leetcode.com/topic/30431/easiest-java-solution-with-explanations
+//buy[i] = Math.max(buy[i - 1], sell[i - 2] - prices[i]);   
+//sell[i] = Math.max(sell[i - 1], buy[i - 1] + prices[i]);
 public class Solution {
     public int maxProfit(int[] prices) {
         int sell = 0, prev_sell = 0, buy = Integer.MIN_VALUE, prev_buy;

@@ -25,7 +25,7 @@ Return 4
 The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
 
 
-//https://discuss.leetcode.com/topic/34835/15ms-concise-java-solution/2
+//https://discuss.leetcode.com/topic/34835/15ms-concise-java-solution/
 public class Solution {
     public static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 

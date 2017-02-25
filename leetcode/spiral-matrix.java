@@ -22,9 +22,9 @@ public class Solution {
         int lvl = (Math.min(m, n) + 1) / 2;
         for(int i = 0; i < lvl; i++){
             // 计算相对应的该圈最后一行
-            int lastRow = m - i - 1;
+            int lastRow = m - 1 - i;
             // 计算相对应的该圈最后一列
-            int lastCol = n - i - 1;
+            int lastCol = n - 1 - i;
             // 如果该圈第一行就是最后一行，说明只剩下一行
             if(i == lastRow){
                 for(int j = i; j <= lastCol; j++){

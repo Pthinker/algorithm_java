@@ -1,3 +1,5 @@
+10. Regular Expression Matching
+
 Implement regular expression matching with support for '.' and '*'.
 
 '.' Matches any single character.
@@ -20,8 +22,6 @@ isMatch("aab", "c*a*b") ? true
 
 public class Solution {
     public boolean isMatch(String s, String p) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         if(s.length()==0)
             return p.length()>1 && p.length()%2==0 ? p.charAt(1)== '*'
                 && isMatch(s,p.substring(2)) : p.length()==0;
@@ -45,5 +45,4 @@ public class Solution {
     public boolean isSame(char c1, char c2){
         return c2=='.' || c1==c2;
     }
- 
 }

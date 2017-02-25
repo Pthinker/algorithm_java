@@ -42,6 +42,7 @@ public class Solution {
 
 
 //////////////////////////////////////////
+
 //follow up
 public class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {

@@ -13,110 +13,108 @@ X X X X
 X O X X
 
 
-//run dfs on all four side(the first outer layer of the matrix) mark +
+//run dfs or bfs on all four side(the first outer layer of the matrix) mark +
 //scan whole matrix, if see O, mark X else if +, mark O
+
 //dfs
 public class Solution {
     public void solve(char[][] board) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        if(board==null || board.length==0) 
-        	return;
-
-        int row = board.length-1;
-        int col = board[0].length-1;
-
-        for(int i=0; i<=row; i++) {
-        	//first column
-            if(board[i][0] == 'O')
-                dfs(board, i, 0);
-            //last column
-            if(board[i][col] == 'O')
-                dfs(board, i, col);
+        if (board.length == 0 || board[0].length == 0)
+            return;
+        if (board.length < 2 || board[0].length < 2)
+            return;
+        int m = board.length, n = board[0].length;
+        //Any 'O' connected to a boundary can't be turned to 'X', so ...
+        //Start from first and last column, turn 'O' to '*'.
+        for (int i = 0; i < m; i++) {
+            if (board[i][0] == 'O')
+                boundaryDFS(board, i, 0);
+            if (board[i][n-1] == 'O')
+                boundaryDFS(board, i, n-1); 
         }
-
-        for(int i=1; i<col; i++) {
-        	//first row
-            if(board[0][i]=='O')
-                dfs(board, 0, i);
-            //last row
-            if(board[row][i]=='O')
-                dfs(board, row, i);
+        //Start from first and last row, turn '0' to '*'
+        for (int j = 0; j < n; j++) {
+            if (board[0][j] == 'O')
+                boundaryDFS(board, 0, j);
+            if (board[m-1][j] == 'O')
+                boundaryDFS(board, m-1, j); 
         }
-
-        for(int i=0; i<=row; i++) {
-            for(int j=0; j<=col; j++) {
-                if(board[i][j]=='O') 
-                	board[i][j]='X';
-                else if(board[i][j]=='+') 
-                	board[i][j] ='O';
+        //post-prcessing, turn 'O' to 'X', '*' back to 'O', keep 'X' intact.
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'O')
+                    board[i][j] = 'X';
+                else if (board[i][j] == '*')
+                    board[i][j] = 'O';
             }
         }
     }
-
-    public void dfs(char[][] board, int x, int y){
-        board[x][y] = '+';
-        if(x-1>=0 && board[x-1][y]=='O')
-            dfs(board, x-1, y);
-        if(y-1>=0 && board[x][y-1]=='O')
-            dfs(board, x, y-1);
-        if(x+1<board.length && board[x+1][y]=='O')
-            dfs(board, x+1, y);
-        if(y+1 <board[0].length && board[x][y+1]=='O')
-            dfs(board, x, y+1);
+    //Use DFS algo to turn internal however boundary-connected 'O' to '*';
+    private void boundaryDFS(char[][] board, int i, int j) {
+        if (i < 0 || i > board.length - 1 || j <0 || j > board[0].length - 1)
+            return;
+        if (board[i][j] == 'O')
+            board[i][j] = '*';
+        if (i > 1 && board[i-1][j] == 'O')
+            boundaryDFS(board, i-1, j);
+        if (i < board.length - 2 && board[i+1][j] == 'O')
+            boundaryDFS(board, i+1, j);
+        if (j > 1 && board[i][j-1] == 'O')
+            boundaryDFS(board, i, j-1);
+        if (j < board[i].length - 2 && board[i][j+1] == 'O' )
+            boundaryDFS(board, i, j+1);
     }
 }
 
-/////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 
 //bfs
 public class Solution {
     public void solve(char[][] board) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        if(board==null || board.length==0) 
-        	return;
-
-        int row = board.length-1;
-        int col = board[0].length-1;
-
-        for(int i=0; i<=row; i++) {
-            bfs(board, i, 0);
-            bfs(board, i, col);
-        }
-        for(int i=1; i<col; i++) {
-            bfs(board,0,i);
-            bfs(board,row,i);
-        }
-
-        for(int i=0; i<=row; i++) {
-            for(int j=0; j<=col; j++) {
-                if(board[i][j]=='O') 
-                	board[i][j]='X';
-                else if(board[i][j]=='+') 
-                	board[i][j] ='O';
+        if (board.length == 0) return;
+        
+        int rowN = board.length;
+        int colN = board[0].length;
+        Queue<int[]> queue = new LinkedList<int[]>();
+       
+        //get all 'O's on the edge first
+        for (int r = 0; r< rowN; r++) {
+            if (board[r][0] == 'O') {
+                queue.add(new int[]{r, 0});
+            }
+            if (board[r][colN-1] == 'O') {
+                queue.add(new int[]{r, colN-1});
             }
         }
-    }
+        
+        for (int c = 0; c< colN; c++) {
+            if (board[0][c] == 'O') {
+                queue.add(new int[]{0, c});
+            }
+            if (board[rowN-1][c] == 'O') {
+                board[rowN-1][c] = '+';
+                queue.add(new int[]{rowN-1, c});
+            }
+        }
 
-    public void bfs(char[][]board, int x, int y) {
-        Queue<Integer[]> queue = new LinkedList<Integer[]>();
-        if(board[x][y]=='O')
-            queue.add(new Integer[]{x,y});
-
-        while(queue.size()>0) {
-            Integer[] curr = queue.poll();
-            x = curr[0]; 
-            y = curr[1];
-            board[x][y] = '+';
-            if(x-1>=0 && board[x-1][y] == 'O')
-                queue.add(new Integer[]{x-1,y});
-            if(y-1 >=0 && board[x][y-1] == 'O')
-                queue.add(new Integer[]{x,y-1});
-            if(x+1<board.length && board[x+1][y] == 'O')
-                queue.add(new Integer[]{x+1,y});
-            if(y+1 <board[0].length && board[x][y+1] == 'O')
-                queue.add(new Integer[]{x,y+1});
+        //BFS for the 'O's, and mark it as '+'
+        while (!queue.isEmpty()){
+            int[] p = queue.poll();
+            board[p[0]][p[1]] = '+';
+            int row = p[0];
+            int col = p[1];
+            if (row - 1 >= 0 && board[row-1][col] == 'O') queue.add(new int[]{row-1, col});
+            if (row + 1 < rowN && board[row+1][col] == 'O') queue.add(new int[]{row+1, col});
+            if (col - 1 >= 0 && board[row][col - 1] == 'O') queue.add(new int[]{row, col-1});
+            if (col + 1 < colN && board[row][col + 1] == 'O') queue.add(new int[]{row, col+1});
+        }
+        
+        //turn all '+' to 'O', and 'O' to 'X'
+        for (int i = 0; i<rowN; i++){
+            for (int j=0; j<colN; j++){
+                if (board[i][j] == 'O') board[i][j] = 'X';
+                if (board[i][j] == '+') board[i][j] = 'O';
+            }
         }
     }
 }

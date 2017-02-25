@@ -19,6 +19,9 @@ What if the BST is modified (insert/delete operations) often and you need to fin
  * }
  */
 
+
+//https://discuss.leetcode.com/topic/17810/3-ways-implemented-in-java-binary-search-in-order-iterative-recursive
+
 //In order travesal, need O(n) extra space
 public class Solution {
     public int kthSmallest(TreeNode root, int k) {

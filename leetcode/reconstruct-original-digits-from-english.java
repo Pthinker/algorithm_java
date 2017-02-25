@@ -52,6 +52,7 @@ public class Solution {
 }
 
 ///////////////////////////////
+
 class Solution {
 public:
     string originalDigits(string s) {

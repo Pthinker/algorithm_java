@@ -15,7 +15,7 @@ Output: 28
 Explanation: The maximum result is 5 ^ 25 = 28.
 
 
-//https://discuss.leetcode.com/topic/63213/java-o-n-solution-using-bit-manipulation-and-hashmap/4
+//https://discuss.leetcode.com/topic/63213/java-o-n-solution-using-bit-manipulation-and-hashmap
 //http://www.cnblogs.com/grandyang/p/5991530.html
 public class Solution {
     public int findMaximumXOR(int[] nums) {

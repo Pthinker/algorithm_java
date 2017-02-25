@@ -58,6 +58,7 @@ public class Codec {
 }
 
 /////////////////////////////////////
+
 //https://discuss.leetcode.com/topic/31264/short-and-straight-forward-bfs-java-code-with-a-queue
 //BFS
 public class Codec {

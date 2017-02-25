@@ -12,7 +12,7 @@ Given n = 3, there are a total of 5 unique BST.
    2     1         2                 3
 
 
-//https://discuss.leetcode.com/topic/8398/dp-solution-in-6-lines-with-explanation-f-i-n-g-i-1-g-n-i/2
+//https://discuss.leetcode.com/topic/8398/dp-solution-in-6-lines-with-explanation-f-i-n-g-i-1-g-n-i
 public class Solution {
     public int numTrees(int n) {
         int [] G = new int[n+1];

@@ -81,7 +81,7 @@ public class Solution {
         secondHead.next = null;
      
         //compare two sublists now
-        ListNode p = (p2==null?p1:p2);
+        ListNode p = p1;
         ListNode q = head;
         while(p!=null){
             if(p.val != q.val)

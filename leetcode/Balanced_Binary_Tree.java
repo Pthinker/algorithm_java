@@ -20,8 +20,6 @@ never differ by more than 1.
 // Exceed time limit
 public class Solution {
     public boolean isBalanced(TreeNode root) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
         if(root==null)
             return true;
 

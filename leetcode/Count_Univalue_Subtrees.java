@@ -17,7 +17,7 @@ Given binary tree,
 return 4.
 
 
-public class Solution {  
+public class Solution {
     public int countUnivalSubtrees(TreeNode root) {  
         unival(root);  
         return count;  
