@@ -83,7 +83,6 @@ public class Solution {
         int col = maze[0].length;
         Boolean[][] memo = new Boolean[row][col];
         return helper(maze, memo, start[0], start[1], destination[0], destination[1], row, col);
-        
     }
     
     

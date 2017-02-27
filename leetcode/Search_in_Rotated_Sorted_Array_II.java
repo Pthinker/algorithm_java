@@ -13,6 +13,7 @@ Write a function to determine if a given target is in the array.
 The array may contain duplicates.
 
 
+//https://discuss.leetcode.com/topic/310/when-there-are-duplicates-the-worst-case-is-o-n-could-we-do-better
 public class Solution {
     public boolean search(int[] nums, int target) {
         if(nums==null || nums.length==0) 

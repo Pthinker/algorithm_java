@@ -11,24 +11,25 @@ Note:
 (4) The nth super ugly number is guaranteed to fit in a 32-bit signed integer.
 
 
+//https://discuss.leetcode.com/topic/34841/java-three-methods-23ms-36-ms-58ms-with-heap-performance-explained
 public class Solution {
     public int nthSuperUglyNumber(int n, int[] primes) {
-        int len = primes.length;
-        int[] index = new int[len];
-        int[] res = new int[n];
-        res[0] = 1;
-        for(int i=1; i<n; i++) {
-            int min = Integer.MAX_VALUE;
-            for(int j=0; j<len; j++){
-                min = Math.min(res[index[j]]*primes[j], min);
-            }
-            res[i] = min;
-            for (int j=0; j<len; j++) {
-                if(res[i]%primes[j]==0) index[j]++;
-            }
+        int[] ugly = new int[n];
+        int[] idx = new int[primes.length];
     
+        ugly[0] = 1;
+        for (int i = 1; i < n; i++) {
+            //find next
+            ugly[i] = Integer.MAX_VALUE;
+            for (int j = 0; j < primes.length; j++)
+                ugly[i] = Math.min(ugly[i], primes[j] * ugly[idx[j]]);
+            
+            //slip duplicate
+            for (int j = 0; j < primes.length; j++) {
+                while (primes[j] * ugly[idx[j]] <= ugly[i]) idx[j]++;
+            }
         }
-        
-        return res[n-1];
+    
+        return ugly[n - 1];
     }
 }

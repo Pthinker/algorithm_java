@@ -43,7 +43,7 @@ public class Solution {
                 if(n.left!=null) next.add(n.left);
                 if(n.right!=null) next.add(n.right);
             }
-            int s=0, e=0;
+
             if(fromLeft) {
                 for(int i=0; i<prev.size(); i++) {
                     TreeNode n = prev.get(i);

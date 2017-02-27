@@ -14,6 +14,7 @@ The key is how to maintain the order of the ugly numbers. Try a similar approach
 Assume you have Uk, the kth ugly number. Then Uk+1 must be Min(L1 * 2, L2 * 3, L3 * 5)
 
 
+//https://discuss.leetcode.com/topic/21882/my-16ms-c-dp-solution-with-short-explanation
 public class Solution {
     public int nthUglyNumber(int n) {
         int i2=0, i3=0, i5=0;

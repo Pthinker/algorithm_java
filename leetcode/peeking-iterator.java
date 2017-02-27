@@ -19,8 +19,6 @@ For a clean implementation, check out Google's guava library source code.
 Follow up: How would you extend your design to be generic and work with all types, not just integer?
 
 
-// Java Iterator interface reference:
-// https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html
 class PeekingIterator implements Iterator<Integer> {
 	private Integer next = null;
     private Iterator<Integer> iter;

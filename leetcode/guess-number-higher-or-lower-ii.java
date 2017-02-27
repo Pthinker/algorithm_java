@@ -31,9 +31,10 @@ The purely recursive implementation of minimax would be worthless for even a sma
 As a follow-up, how would you modify your code to solve the problem of minimizing the expected loss, instead of the worst-case loss?
 
 
-//https://www.hrwhisper.me/leetcode-guess-number-higher-lower-ii/
+//https://www.hrwhisper.me/leetcode-guess-number-higher-lower-ii
 //https://harunscorner.wordpress.com/2016/09/04/leetcode-guess-number-higher-or-lower-ii-solution/
-//https://discuss.leetcode.com/topic/68252/clarification-on-the-problem-description-problem-description-need-to-be-updated/2
+//https://discuss.leetcode.com/topic/68252/clarification-on-the-problem-description-problem-description-need-to-be-updated/
+//https://discuss.leetcode.com/topic/51353/simple-dp-solution-with-explanation
 //Notice we do not need to pay the money for both subproblems. We only need to pay the worst case (because the system will tell us which side we should go) to guarantee win. So dp[i][j] = min (i<=k<=j) { k + max(dp[i][k-1], dp[k+1][j]) }
 public class Solution {
     public int getMoneyAmount(int n) {

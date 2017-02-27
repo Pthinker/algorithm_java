@@ -26,17 +26,19 @@ The flattened tree should look like:
 
 public class Solution {
     public void flatten(TreeNode root) {
-        if(root==null) {
-            return;
-        }
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        stack.push(root);
-        while(stack.size()>0) {
-            TreeNode n = stack.pop();
-            if(n.right!=null) stack.push(n.right);
-            if(n.left!=null) stack.push(n.left);
-            n.left = null;
-            n.right = stack.size()>0 ? stack.peek() : null;
-        }
+        if (root == null) return;
+        
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        
+        root.left = null;
+        
+        flatten(left);
+        flatten(right);
+        
+        root.right = left;
+        TreeNode cur = root;
+        while (cur.right != null) cur = cur.right;
+        cur.right = right;
     }
 }

@@ -22,6 +22,8 @@ Output: 2
 Explanation: You could form "10", but then you''d have nothing left. Better form "0" and "1".
 
 
+//http://www.cnblogs.com/grandyang/p/6188893.html
+//2 dimension backpack problem
 public class Solution {
     public int findMaxForm(String[] strs, int m, int n) {
         int[][] dp = new int[m+1][n+1];

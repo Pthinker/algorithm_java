@@ -23,6 +23,7 @@ Can you do it in O(n) time?
 
 //dp
 /*
+O(n^2)
 维护两个dp数组p和q，其中p[i]表示到i位置时首差值为正的摆动子序列的最大长度，q[i]表示到i位置时首差值为负的摆动子序列的最大长度。我们从i=1开始遍历数组，然后对于每个遍历到的数字，再从开头位置遍历到这个数字，然后比较nums[i]和nums[j]，分别更新对应的位置
 */
 public class Solution {
@@ -48,6 +49,37 @@ public class Solution {
             }
         }
         return Math.max(p[p.length-1], q[q.length-1]);
+    }
+}
+
+/////////////////////////////
+
+//https://discuss.leetcode.com/topic/52076/easy-understanding-dp-solution-with-o-n-java-version
+//O(n)
+public class Solution {
+    public int wiggleMaxLength(int[] nums) {
+        if( nums.length == 0 ) return 0;
+        
+        int[] up = new int[nums.length];
+        int[] down = new int[nums.length];
+        
+        up[0] = 1;
+        down[0] = 1;
+        
+        for(int i = 1 ; i < nums.length; i++){
+            if( nums[i] > nums[i-1] ){
+                up[i] = down[i-1]+1;
+                down[i] = down[i-1];
+            }else if( nums[i] < nums[i-1]){
+                down[i] = up[i-1]+1;
+                up[i] = up[i-1];
+            }else{
+                down[i] = down[i-1];
+                up[i] = up[i-1];
+            }
+        }
+        
+        return Math.max(down[nums.length-1],up[nums.length-1]);
     }
 }
 

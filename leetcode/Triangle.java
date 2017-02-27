@@ -51,6 +51,8 @@ public class Solution {
 
 ////////////////////////////////////////////////////////////////////////
 
+//https://discuss.leetcode.com/topic/1669/dp-solution-for-triangle
+
 public class Solution {
     public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
         if(triangle==null || triangle.size()==0)

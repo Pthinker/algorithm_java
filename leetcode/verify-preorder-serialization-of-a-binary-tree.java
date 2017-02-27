@@ -30,7 +30,7 @@ Example 3:
 Return false
 
 
-//https://discuss.leetcode.com/topic/35973/java-intuitive-22ms-solution-with-stack/2
+//https://discuss.leetcode.com/topic/35973/java-intuitive-22ms-solution-with-stack/
 /*
 when you iterate through the preorder traversal string, for each char:
 
