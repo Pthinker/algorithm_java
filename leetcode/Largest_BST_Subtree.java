@@ -58,5 +58,39 @@ public class Solution {
 
 ////////////////////////////////////////
 
+public class Solution {
+    public int largestBSTSubtree(TreeNode root) {
+        int[] ans = new int[]{0};
+        findBST(root, ans);
+        return ans[0];
+    }
+    
+    private class Res {
+        int min, max, size;
+        
+        public Res(int l, int r, int k) {
+            min = l; max = r; size = k;
+        }
+    }
+    
+    private Res findBST(TreeNode rt, int[] ans) {
+        if (rt == null) return null;
+        boolean isBST = true;
+        int min = rt.val, max = rt.val, size = 1;
+        Res l = findBST(rt.left, ans), r = findBST(rt.right, ans);
+        if (rt.left != null) {
+            if (l == null || l.max > rt.val) return null;
+            min = l.min;
+            size += l.size;
+        }
+        if (rt.right != null) {
+            if (r == null || r.min < rt.val) return null;
+            max = r.max;
+            size += r.size;
+        }
+        ans[0] = Math.max(ans[0], size);
+        return new Res(min, max, size);
+    }
+}
 
 

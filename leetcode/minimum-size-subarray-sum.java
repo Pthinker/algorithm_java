@@ -6,8 +6,28 @@ For example, given the array [2,3,1,2,4,3] and s = 7,
 the subarray [4,3] has the minimal length under the problem constraint.
 
 More practice:
-If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
+If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(nlog n).
 
+
+//sliding window
+public class Solution {
+    public int minSubArrayLen(int s, int[] nums) {
+        if(nums.length == 0) return 0;
+        int left = 0, sum = 0, minLen = nums.length + 1;
+        
+        for(int i=0; i<nums.length; i++) {
+            sum += nums[i];
+            while(sum>=s) {
+                minLen = Math.min(minLen, i-left+1);
+                sum = sum-nums[left];
+                left++;
+            }
+        }
+        return minLen<=nums.length? minLen : 0;
+    }
+}
+
+/////////////////////////////////
 
 public class Solution {
     public int minSubArrayLen(int s, int[] nums) {

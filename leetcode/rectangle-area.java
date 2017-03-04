@@ -15,6 +15,7 @@ public class Solution {
 
 ///////////////////////////////////
 
+//https://discuss.leetcode.com/topic/15733/my-java-solution-sum-of-areas-overlapped-area
 public class Solution {
     public int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
         int areaOfSqrA = (C-A) * (D-B);

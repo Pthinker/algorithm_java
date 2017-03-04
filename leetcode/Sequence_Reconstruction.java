@@ -41,7 +41,31 @@ Output:
 true
 
 
-//
+//https://discuss.leetcode.com/topic/65961/simple-solution-one-pass-using-only-array-c-92ms-java-16ms
+public boolean sequenceReconstruction(int[] org, int[][] seqs) {
+    if(seqs.length == 0) return false; 
+    int[] pos = new int[org.length+1];
+    for(int i=0;i<org.length;++i) pos[org[i]] = i;
+    boolean[] flags = new boolean[org.length+1];
+    int toMatch = org.length-1;
+    for(int[] v : seqs) {
+        for(int i=0;i<v.length;++i) {
+            if(v[i]<=0 || v[i] > org.length)return false;
+            if(i==0)continue;
+            int x = v[i-1], y = v[i];
+            if(pos[x] >= pos[y])return false;
+            if(flags[x] == false && pos[x]+1 == pos[y]) {
+                flags[x] = true;
+                --toMatch;
+            }
+        }
+    }
+    return toMatch == 0;
+}
+
+//////////////////////////////////////////////////////////////
+
+//https://discuss.leetcode.com/topic/65948/java-solution-using-bfs-topological-sort
 public class Solution {
     public boolean sequenceReconstruction(int[] org, int[][] seqs) {
         Map<Integer, Set<Integer>> map = new HashMap<>();

@@ -31,7 +31,6 @@ public class Solution {
         List<List<String>> res = new ArrayList<List<String>>();
         for(String key : map.keySet()){
             List<String> curr = map.get(key);
-            //Collections.sort(curr);
             res.add(curr);
         }
         return res;

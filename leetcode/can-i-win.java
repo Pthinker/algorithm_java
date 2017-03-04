@@ -27,7 +27,7 @@ The second player will win by choosing 10 and get a total = 11, which is >= desi
 Same with other integers chosen by the first player, the second player will always win.
 
 
-//https://discuss.leetcode.com/topic/68896/java-solution-using-hashmap-with-detailed-explanation/2
+//https://discuss.leetcode.com/topic/68896/java-solution-using-hashmap-with-detailed-explanation/
 public class Solution {
     Map<Integer, Boolean> map;
     boolean[] used;

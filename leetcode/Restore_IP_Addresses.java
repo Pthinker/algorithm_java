@@ -28,7 +28,6 @@ public class Solution {
                     r += tmp.get(i) + ".";
                 r += tmp.get(3);
                 res.add(r);
-            
             }
             return;
         }

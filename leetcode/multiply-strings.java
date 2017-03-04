@@ -10,7 +10,7 @@ Both num1 and num2 does not contain any leading zero.
 You must not use any built-in BigInteger library or convert the inputs to integer directly.
 
 
-//https://discuss.leetcode.com/topic/30508/easiest-java-solution-with-graph-explanation/2
+//https://discuss.leetcode.com/topic/30508/easiest-java-solution-with-graph-explanation
 public class Solution {
     public String multiply(String num1, String num2) {
         int m = num1.length(), n = num2.length();

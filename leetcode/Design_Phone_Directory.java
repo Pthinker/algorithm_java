@@ -35,14 +35,14 @@ directory.check(2);
 
 
 Set<Integer> used = new HashSet<Integer>();
-        Queue<Integer> available = new LinkedList<Integer>();
-        int max;
-        public PhoneDirectory(int maxNumbers) {
-                max = maxNumbers;
-                for (int i = 0; i < maxNumbers; i++) {
-                        available.offer(i);
-                }
-        }
+Queue<Integer> available = new LinkedList<Integer>();
+int max;
+public PhoneDirectory(int maxNumbers) {
+    max = maxNumbers;
+    for (int i = 0; i < maxNumbers; i++) {
+            available.offer(i);
+    }
+}
 
 public int get() {
     Integer ret = available.poll();
