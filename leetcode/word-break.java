@@ -26,8 +26,8 @@ public class Solution {
             dict.add(w);
         }
         
-        for(int i=1; i<=s.length(); i++){
-            for(int j=0; j < i; j++){
+        for(int i=1; i<=s.length(); i++) {
+            for(int j=0; j<i; j++) {
                 if(f[j] && dict.contains(s.substring(j, i))){
                     f[i] = true;
                     break;
