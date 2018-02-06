@@ -45,9 +45,6 @@ public class Solution {
 //https://discuss.leetcode.com/topic/9615/dfs-with-path-memorizing-java-solution
 public class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
-        boolean[] f = new boolean[s.length() + 1];
-        f[0] = true;
-        
         Set<String> dict = new HashSet<String>();
         for(String w : wordDict) {
             dict.add(w);
